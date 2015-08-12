@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <label for="textarea">Following text is synchronized between all clients</label>
+        <br>
+        <textarea id="textarea" rows="15" cols="120"></textarea>
+    </div>
+
+    <script>
+        // Set up Websocket connection
+        var conn = new WebSocket('ws://localhost:8080');
+        conn.onopen = function(e) {
+            console.log("Connection established!");
+        };
+
+        // Receive and transfer data
+        var textarea = document.getElementById('textarea');
+        conn.onmessage = function(e) {
+            textarea.value = e.data;
+        };
+        textarea.onkeyup = function(e) {
+            conn.send(textarea.value);
+        }
+    </script>
+</body>
+</html>

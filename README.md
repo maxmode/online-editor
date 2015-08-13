@@ -2,7 +2,7 @@
 
 This is a simple multi-user online editor.
 
-Clients are changing text in the text area and the text is syncronized between all clients.
+Clients are changing text in a textarea and the text is syncronized between all clients.
 
 WebSockets technology is used to communicate between server and client.
 
@@ -21,4 +21,4 @@ Edited text is stored in memory on server side, and would be cleaned after serve
     php bin/server.php
 ```
 
-1. Open in browser several clients 'web/index.php'
+1. Open in browser several clients 'web/index.html'
